@@ -11,7 +11,7 @@ layout: two-cols
 - growth of the team
 
 ::right::
-<img src="images/growth.png" />
+<img src="/images/growth.png" />
 
 <style>
 .slidev-layout li {
