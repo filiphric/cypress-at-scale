@@ -1,0 +1,3 @@
+- tagging tests
+- configuration
+- running in parallel
