@@ -11,7 +11,7 @@ layout: two-cols
 - human time is more valuable than machine time
 
 ::right::
-<img src="images/guide.png" class="pt-20 pl-20" />
+<img src="/images/guide.png" class="pt-20 pl-20" />
 
 <style>
 .slidev-layout li {

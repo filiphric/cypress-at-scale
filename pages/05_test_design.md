@@ -10,8 +10,8 @@ layout: two-cols
 
 
 ::right::
-<img src="images/project_1.png" class="w-80 my-15" />
-<img src="images/aaa.png" class="w-80 mt-10" />
+<img src="/images/project_1.png" class="w-80 my-15" />
+<img src="/images/aaa.png" class="w-80 mt-10" />
 
 <style>
 .slidev-layout li {
