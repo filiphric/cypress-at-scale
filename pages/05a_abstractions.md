@@ -1,6 +1,7 @@
 ---
 layout: two-cols
 ---
+
 # Test design
 
 test:
@@ -25,12 +26,19 @@ Cypress.Command.add('openMenu', () => {
 <img src="/images/board.png" />
 </div>
 
-<!-- 
+<style>
+  .two-columns {
+  gap: 1rem;
+  grid-template-columns: 5fr 3fr !important;
+}
+</style>
+
+<!--
 - **three dot button** opens a menu
-- used all the time when testing this app
+- sequence of actions that might occur multiple times in our test suite, we want to be DRY, let’s abstract
 - [click] so we create a custom command to abstract it
 - so far so good, but then
- -->
+-->
 
 ---
 layout: two-cols
@@ -60,6 +68,13 @@ Cypress.Command.add('openMenu', (item) => {
 <div class="grid items-center h-full">
 <img src="/images/board2.png" />
 </div>
+
+<style>
+  .two-columns {
+  gap: 1rem;
+  grid-template-columns: 5fr 3fr !important;
+}
+</style>
 
 <!-- 
 - we have multiple items
@@ -98,6 +113,13 @@ Cypress.Command.add('openMenu', (item, isList = false) => {
 <div class="grid items-center h-full">
 <img src="/images/board3.png" />
 </div>
+
+<style>
+  .two-columns {
+  gap: 1rem;
+  grid-template-columns: 5fr 3fr !important;
+}
+</style>
 
 <!--
 - but now we are introduced to another problem, because the menu component can actually be used for the main panel or in the todo lists
@@ -140,10 +162,18 @@ Cypress.Command.add('openMenu', (item, isList = false, index = 0) => {
 <img src="/images/board4.png" />
 </div>
 
+<style>
+  .two-columns {
+  gap: 1rem;
+  grid-template-columns: 5fr 3fr !important;
+}
+</style>
+
 <!--
 - And now we get to another problem, because there can be multiple todo lists
 - [click] so we add an index number
 - [click] when we now look at our custom command it has gotten way too complicated and we should probably refactor it
+- by this time, our abstraction has become incredibely complex
 -->
 
 ---
@@ -164,11 +194,11 @@ flowchart LR
 B(Test) --> A(Abstraction)
 C(Test) --> A(Abstraction)
 D(Test) --> A(Abstraction)
-style A fill:#F02D5E,stroke-width:0px,color:#fff
-style B fill:#41B0F6,stroke-width:0px,color:#fff
-style C fill:#41B0F6,stroke-width:0px,color:#fff
-style D fill:#41B0F6,stroke-width:0px,color:#fff
-linkStyle 0,1,2 stroke:#fff,stroke-width:2px,color:white;
+style A stroke:#F02D5E,stroke-dasharray:3,stroke-width:1px,stroke-color:#fff,fill:transparent
+style B stroke:#41B0F6,stroke-dasharray:3,stroke-width:1px,stroke-color:#fff,fill:transparent
+style C stroke:#41B0F6,stroke-dasharray:3,stroke-width:1px,stroke-color:#fff,fill:transparent
+style D stroke:#41B0F6,stroke-dasharray:3,stroke-width:1px,stroke-color:#fff,fill:transparent
+linkStyle 0,1,2 stroke:#fff,stroke-width:1px,color:white;
 ```
 
 <style>
@@ -182,8 +212,8 @@ linkStyle 0,1,2 stroke:#fff,stroke-width:2px,color:white;
 }
 </style>
 
-<!-- 
-- but we have now introduced a problem into our test suite
+<!--
+- but refactoring will now be a problem
 - because we have all these tests using our abstraction
 -->
 
@@ -204,11 +234,11 @@ flowchart RL
 A(Abstraction) --> B(Test)
 A(Abstraction) --> C(Test)
 A(Abstraction) --> D(Test)
-style A fill:#F02D5E,stroke-width:0px,color:#fff
-style B fill:#41B0F6,stroke-width:0px,color:#fff
-style C fill:#41B0F6,stroke-width:0px,color:#fff
-style D fill:#41B0F6,stroke-width:0px,color:#fff
-linkStyle 0,1,2 stroke:#fff,stroke-width:2px,color:white;
+style A stroke:#F02D5E,stroke-dasharray:3,stroke-width:1px,stroke-color:#fff,fill:transparent
+style B stroke:#41B0F6,stroke-dasharray:3,stroke-width:1px,stroke-color:#fff,fill:transparent
+style C stroke:#41B0F6,stroke-dasharray:3,stroke-width:1px,stroke-color:#fff,fill:transparent
+style D stroke:#41B0F6,stroke-dasharray:3,stroke-width:1px,stroke-color:#fff,fill:transparent
+linkStyle 0,1,2 stroke:#fff,stroke-width:1px,color:white;
 ```
 
 <style>
@@ -223,11 +253,10 @@ linkStyle 0,1,2 stroke:#fff,stroke-width:2px,color:white;
 </style>
 
 <!--
-- but when we change the abstraction, it’s going to affect all oue tests
-- and I’m not saying abstraction is a bad thing
-- it’s that there are lot of cases of them being used, just because they are a "good pracitce"
-- when starting new project:
-- "not useful now, but it will be useful in the future" - I just demonstrated it might actually make stuff more complicated
-- no one can predict future
-- don’t be afraid to write plain commands
+- but when we change the abstraction, it’s going to affect all our tests
+
+- so why am I talking about this?
+- as your project will scale, these kind of situations may start happening more often, and they are going to get harder to mitigate
+- so when we talk about test design with the mindset of scaling the project, it’s really worth to be aware of what is an industry "good practice" and what is actually a good practice for your project
+- because as we just demonstrated a seemingly good practice has the potential to turn into a nightmare
 -->

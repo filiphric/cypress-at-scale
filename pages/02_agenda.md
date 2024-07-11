@@ -5,14 +5,14 @@ layout: two-cols
 # Agenda
 - why/when talk about scaling?
 - guiding principles
-- abstractions & test design
+- test design
 - readability
 - project design & utilities
 - running on CI
 - maintenance
 
 ::right::
-<img src="/images/notebook.png" class="relative pt-24 pl-10 w-[90%]" />
+<img src="/images/notebook.png" class="pt-10" />
 
 <style>
 .slidev-layout li {

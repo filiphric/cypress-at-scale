@@ -1,0 +1,12 @@
+.slidev-note {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.7rem !important;
+}
+
+#slide-content {
+  background-color: #33333F !important;
+}
+
+#flowchart-A-0 > g > foreignObject > div > span {
+  font-family: 'Virgil' !important;
+}

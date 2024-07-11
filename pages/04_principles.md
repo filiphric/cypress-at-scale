@@ -11,7 +11,7 @@ layout: two-cols
 - human time is more valuable than machine time
 
 ::right::
-<img src="/images/guide.png" class="pt-20 pl-20" />
+<img src="/images/guide.png" class="pt-10" />
 
 <style>
 .slidev-layout li {
@@ -23,6 +23,15 @@ layout: two-cols
 </style>
 
 <!--
+- let’s start with some principles that guide decisions on these recommendations
+- putting them out there, because there are many questions to which "it depends" is the best answer
+- we’ll try to approach this webinars with these principles in mind, and if your situation requires a different sets of principles, that’s okay, you can take the advice here with a grain of salt, and I’m sure Jonathan will also add some counterpoints
+
+- test code and app code should be linked together - especially for Cypress - a testing tool
+- Cypress does not do well if the code is too detached, if you want to perform so called black-box testing, that’s not what Cypress is good at
+- speaking of things Cypress is good at - readability
+- bad readability = project being slow, because of maintenance
+
 - something that testers don’t like to hear (I don’t like to hear that as well), is that in most situations, testing is a liability
 - maintenance cost, worker cost, tooling,... all that cost your company money
 - many companies make the mistake of looking at testing as liability and cut budgets, lay off people
